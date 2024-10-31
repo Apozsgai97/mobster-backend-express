@@ -30,6 +30,12 @@ export function createMobRouter() {
 
     res.json(mobs[0]);
   });
+  router.get("/mobs/:mobId/members", (req, res) => {
+    const id = req.params.mobId;
+    const mobs = mockMobs.filter((mob) => mob.mobId === id);
+
+    res.json(mobs[0].members);
+  });
 
   return router;
 }
