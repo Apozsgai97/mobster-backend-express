@@ -1,12 +1,13 @@
 import express from "express";
-import { createMobFeatures } from "./features";
+import { createMobRouter } from "./features";
 
-const mobFeatures = createMobFeatures();
+const mobFeatures = createMobRouter();
 
 export function createApp() {
   const app = express();
+  app.use(express.json());
 
-  app.use("/", mobFeatures.getRouter());
+  app.use("/", mobFeatures);
 
   return app;
 }
