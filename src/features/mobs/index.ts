@@ -6,12 +6,10 @@ import { MobType } from "../../types/types";
 export function createMobRouter() {
   const router = express.Router();
 
-  // GET: Hämta alla mobs
-  router.get("/mobs", (req, res) => {
+  router.get("/", (req, res) => {
     res.json({ mockMobs });
   });
 
-  // POST: Skapa en ny mob
   router.post("/mobs", (req, res) => {
     const id = uuidv4();
     console.log(req.body);
@@ -22,9 +20,15 @@ export function createMobRouter() {
       name: name,
       members: [],
     };
-    console.log(mob);
     mockMobs.push(mob);
     res.status(201).json(mob);
+  });
+
+  router.get("/mobs/:mobId", (req, res) => {
+    const id = req.params.mobId;
+    const mobs = mockMobs.filter((mob) => mob.mobId === id);
+
+    res.json(mobs[0]);
   });
 
   return router;
