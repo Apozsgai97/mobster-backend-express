@@ -1,9 +1,12 @@
 import express from "express";
+import { createMobFeatures } from "./features";
 
-const app = express();
+const mobFeatures = createMobFeatures();
 
-app.get("/", (req, res) => {
-  res.send("express on vercel");
-});
+export function createApp() {
+  const app = express();
 
-export default app;
+  app.use("/", mobFeatures.getRouter());
+
+  return app;
+}

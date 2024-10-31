@@ -1,7 +1,9 @@
-import app from "./app";
+import { createApp } from "./app";
 
-app.listen(3000, () => {
-  console.log("server listening on http://localhost:3000/");
+const port = 3000;
+
+createApp().listen(port, () => {
+  console.log(`server listening on http://localhost:${port}/`);
 });
 
 /*`GET YOUR_BACKEND_URL/mobs/` # get all mobs
