@@ -1,18 +1,8 @@
-
-import express from "express";
-
-const app = express();
-
-app.get("/", (req, res) => {
-  res.send("express on vercel");
-});
-
-export default app;
+import app from "./app";
 
 app.listen(3000, () => {
   console.log("server listening on http://localhost:3000/");
 });
-
 
 /*`GET YOUR_BACKEND_URL/mobs/` # get all mobs
 `POST YOUR_BACKEND_URL/mobs/` # add a new mob
